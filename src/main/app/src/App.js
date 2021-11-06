@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+'use strict';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const React = require('react'); 
+const ReactDOM = require('react-dom');
+const client = require('./client');
+
+class NewApp extends React.Component { 
+
+	constructor(props) {
+		super(props);
+		this.state = {users: []};
+	}
+
+	componentDidMount() { 
+		client({method: 'GET', path: '/api/users'}).done(response => {
+			this.setState({users: response.entity._embedded.users});
+		});
+	}
+
+	render() {
+		return (
+			<EmployeeList users={this.state.users}/>
+		)
+	}
 }
 
-export default App;
+class EmployeeList extends React.Component{
+	render() {
+		const users = this.props.users.map(user =>
+			<User key={user._links.self.href} user={user}/>
+		);
+		return (
+			<table>
+				<tbody>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Description</th>
+					</tr>
+					{users}
+				</tbody>
+			</table>
+		)
+	}
+}
+
+class User extends React.Component{
+	render() {
+		return (
+			<tr>
+				<td>{this.props.user.username}</td>
+				<td>{this.props.user.password}</td>
+				<td>{this.props.user.usergroup}</td>
+			</tr>
+		)
+	}
+}
+
+ReactDOM.render(
+	<NewApp />,
+	document.getElementById('react')
+)

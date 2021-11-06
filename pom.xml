@@ -102,7 +102,7 @@
 						</goals>
 						<phase>generate-resources</phase>
 						<configuration>
-							<arguments>-p</arguments>
+							<arguments>--mode development</arguments>
 						</configuration>
 					</execution>
 				</executions>
