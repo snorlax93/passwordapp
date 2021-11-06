@@ -19,12 +19,12 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<EmployeeList users={this.state.users}/>
+			<UserList users={this.state.users}/>
 		)
 	}
 }
 
-class EmployeeList extends React.Component{
+class UserList extends React.Component{
 	render() {
 		const users = this.props.users.map(user =>
 			<User key={user._links.self.href} user={user}/>
