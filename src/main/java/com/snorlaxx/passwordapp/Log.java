@@ -4,12 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 import java.util.Objects;
 
 @Entity
 public class Log {
 
-    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lid_generator") 
+    @SequenceGenerator(name="lid_generator", sequenceName = "lid_seq", allocationSize=1)
     private Long lid;
     private Long uid;
     private String transaction;

@@ -4,12 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 import java.util.Objects;
 
 @Entity
 public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "uid_generator") 
+    @SequenceGenerator(name="uid_generator", sequenceName = "uid_seq", allocationSize=1)
     private Long uid;
     private String username;
     private String password;

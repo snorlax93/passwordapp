@@ -4,12 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 import java.util.Objects;
 
 @Entity
 public class Account {
 
-    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aid_generator") 
+    @SequenceGenerator(name="aid_generator", sequenceName = "aid_seq", allocationSize=1)
     private Long aid;
     private String account;
     private String password;
