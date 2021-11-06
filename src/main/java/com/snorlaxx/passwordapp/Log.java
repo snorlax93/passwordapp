@@ -2,13 +2,15 @@ package com.snorlaxx.passwordapp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class Log {
 
-    private @Id @GeneratedValue Long lid;
+    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long lid;
     private Long uid;
     private String transaction;
 

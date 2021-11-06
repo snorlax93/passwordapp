@@ -2,13 +2,15 @@ package com.snorlaxx.passwordapp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class User {
 
-    private @Id @GeneratedValue Long uid;
+    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long uid;
     private String username;
     private String password;
     private Integer usergroup;
