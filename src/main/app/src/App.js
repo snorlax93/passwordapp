@@ -4,7 +4,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
 
-class NewApp extends React.Component { 
+class App extends React.Component { 
 
 	constructor(props) {
 		super(props);
@@ -57,6 +57,6 @@ class User extends React.Component{
 }
 
 ReactDOM.render(
-	<NewApp />,
+	<App />,
 	document.getElementById('react')
 )
