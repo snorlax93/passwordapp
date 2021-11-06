@@ -24,13 +24,13 @@ public class DatabaseLoader implements CommandLineRunner {
         this.userDB.save(new User("test2@email.com", "password1", 1));
         this.userDB.save(new User("test3@email.com", "password1", 2));
         this.userDB.save(new User("test3@email.com", "password1", 3));
-        this.actDB.save(new Account("kohls", "kohlspassword", "6146689461", 15000000000L));
-        this.actDB.save(new Account("nike", "nikepassword", "6146689462", 15000000001L));
-        this.actDB.save(new Account("adidas", "adidaspassword", "6146689463", 15000000002L));
-        this.actDB.save(new Account("underarmor", "underarmorpassword", "6146689464", 15000000003L));
-        this.actDB.save(new Account("krogers", "krogerspassword", "6146689465", 15000000004L));
-        this.logDB.save(new Log(15000000001L, "Something is happening"));
-        this.logDB.save(new Log(15000000002L, "That's why we're logging it"));
-        this.logDB.save(new Log(15000000003L, "Aren't you excited"));
+        this.actDB.save(new Account("kohls", "kohlspassword", "6146689461", 1L));
+        this.actDB.save(new Account("nike", "nikepassword", "6146689462", 2L));
+        this.actDB.save(new Account("adidas", "adidaspassword", "6146689463", 3L));
+        this.actDB.save(new Account("underarmor", "underarmorpassword", "6146689464", 4L));
+        this.actDB.save(new Account("krogers", "krogerspassword", "6146689465", 5L));
+        this.logDB.save(new Log(1L, "Something is happening"));
+        this.logDB.save(new Log(2L, "That's why we're logging it"));
+        this.logDB.save(new Log(3L, "Aren't you excited"));
     }
 }
