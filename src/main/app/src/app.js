@@ -33,9 +33,9 @@ class UserList extends React.Component{
 			<table>
 				<tbody>
 					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Description</th>
+						<th>UserName</th>
+						<th>Password</th>
+						<th>UserGroup</th>
 					</tr>
 					{users}
 				</tbody>
