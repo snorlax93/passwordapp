@@ -1,13 +1,13 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/main/js/app.js',
     devtool: 'eval', // https://webpack.js.org/configuration/devtool/
     cache: true,
     mode: 'development',
     output: {
         path: __dirname,
-        filename: './resources/static/built/bundle.js'
+        filename: './src/main/js/resources/static/built/bundle.js'
     },
     module: {
         rules: [
