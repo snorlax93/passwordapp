@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LogController {
     
     @Autowired
-    private LogService LogService;
+    private LogService logService;
 
     @GetMapping("/log")
     public String logIndex(Model model) {
-        model.addAttribute("Logs", LogService.getAllLogs());
+        model.addAttribute("logs", logService.getAllLogs());
         return "logIndex";
     }
 
@@ -31,21 +31,24 @@ public class LogController {
     }
 
     @PostMapping("/log/save")
-    public String saveLog(@ModelAttribute("log") Log log) {
-        LogService.saveLog(log);
-        return "redirect:/";
+    public String saveLog(@ModelAttribute("log") Log log, Model model) {
+        logService.saveLog(log);
+        model.addAttribute("log", log);
+        return "newLogConfirm";
     }
-
+    
     @GetMapping("/log/{lid}/update")
     public String updateLog(@PathVariable(value = "lid") long lid, Model model) {
-        Log log = LogService.getLogById(lid);
+        Log log = logService.getLogById(lid);
         model.addAttribute("log", log);
         return "updateLogForm";
     }
 
     @GetMapping("/log/{lid}/delete")
-    public String deleteLog(@PathVariable(value = "lid") long lid) {
-        this.LogService.deleteLogById(lid);
-        return "redirect:/";
+    public String deleteLog(@PathVariable(value = "lid") long lid, Model model) {
+        Log log = this.logService.getLogById(lid);
+        this.logService.deleteLogById(lid);
+        model.addAttribute("log", log);
+        return "deleteLogConfirm";
     }
 }

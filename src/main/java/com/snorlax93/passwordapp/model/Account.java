@@ -18,16 +18,10 @@ public class Account {
     private Long aid;
 
     @Column(name = "account")
-    private String account;
+    private String name;
 
     @Column(name = "password")
     private String password;
-
-    @Column(name = "factorauth")
-    private String factorauth;
-
-    @Column(name = "owner")
-    private Long owner;
 
     // getter & setters
     public Long getAid() {
@@ -38,12 +32,12 @@ public class Account {
         this.aid = aid;
     }
 
-    public String getAccount() {
-        return account;
+    public String getName() {
+        return name;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -52,21 +46,5 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getFactorauth() {
-        return factorauth;
-    }
-
-    public void setFactorauth(String factorauth) {
-        this.factorauth = factorauth;
-    }
-
-    public Long getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Long owner) {
-        this.owner = owner;
     }
 }

@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping("/user")
     public String userIndex(Model model) {
-        model.addAttribute("Users", UserService.getAllUsers());
+        model.addAttribute("users", UserService.getAllUsers());
         return "userIndex";
     }
 
@@ -31,9 +31,10 @@ public class UserController {
     }
 
     @PostMapping("/user/save")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@ModelAttribute("user") User user, Model model) {
         UserService.saveUser(user);
-        return "redirect:/";
+        model.addAttribute("user", user);
+        return "newUserConfirm";
     }
 
     @GetMapping("/user/{uid}/update")
@@ -44,8 +45,10 @@ public class UserController {
     }
 
     @GetMapping("/user/{uid}/delete")
-    public String deleteUser(@PathVariable(value = "uid") long uid) {
+    public String deleteUser(@PathVariable(value = "uid") long uid, Model model) {
+        User user = UserService.getUserById(uid);
         this.UserService.deleteUserById(uid);
-        return "redirect:/";
+        model.addAttribute("user", user);
+        return "deleteUserconfirm";
     }
 }

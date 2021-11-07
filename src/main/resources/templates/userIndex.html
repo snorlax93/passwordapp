@@ -13,30 +13,32 @@
 <body>
 
     <div class="container" style="margin-top: 24px;">
-        <h2>Accounts List</h1>
+        <h2>Users List</h1>
 
         <table class="table" style="margin-top: 24px;">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Website Name</th>
+                <th scope="col">Username</th>
                 <th scope="col">Password</th>
+                <th scope="col">UserGroup</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr th:each="account : ${accounts}">
-                <th th:text="${account.aid}" scope="row"></th>
-                <td th:text="${account.name}"></td>
-                <td th:text="${account.password}"></td>
-                <td> <a th:href="@{/account/{aid}/update (aid=${account.aid})}" class="btn btn-primary">Update</a>
-                    <a th:href="@{/account/{aid}/delete (aid=${account.aid})}" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.uid}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.usergroup}"></td>
+                    <td> <a th:href="@{/user/{uid}/update (uid=${user.uid})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/user/{uid}/delete (uid=${user.uid})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
             </tbody>
           </table>
 
-        <a th:href="@{/account/new}" class="btn btn-outline-primary">Add Account</a>
+        <a th:href="@{/user/new}" class="btn btn-outline-primary">Add User</a>
     </div>
 </body>
 
