@@ -12,7 +12,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() { 
-		client({method: 'GET', path: '/api/users'}).done(response => {
+		client({method: 'GET', path: '/api/users'}).then(response => {
 			this.setState({users: response.entity._embedded.users});
 		});
 	}
